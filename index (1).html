@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="ko"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>보수 안내 | 권태욱세무회계사무소</title><meta name="description" content="사업자 유형과 연간 매출규모에 따른 월 기장료 및 세무조정 수수료 안내"><meta property="og:title" content="개인·법인사업자 보수 안내 | 권태욱세무회계사무소"><meta property="og:description" content="성실신고 대상자 추가보수와 세액공제 안내를 포함한 예상 세무보수 계산"><meta property="og:image" content="og-v3.png"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="og-v3.png"><style>
+
+
+:root {
+  --navy: #0b2b50;
+  --navy-deep: #071d35;
+  --blue: #22599a;
+  --paper: #f4f1eb;
+  --cream: #fbfaf7;
+  --ink: #14202c;
+  --muted: #68727b;
+  --line: #d9d6cf;
+  --accent: #d2603b;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; background: var(--cream); color: var(--ink); font-family: "Pretendard", "Noto Sans KR", "Apple SD Gothic Neo", sans-serif; }
+button, input { font: inherit; }
+button, a { -webkit-tap-highlight-color: transparent; }
+a { color: inherit; text-decoration: none; }
+main { min-height: 100vh; overflow: hidden; }
+
+.site-header { height: 92px; padding: 0 max(5vw, 28px); display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid rgba(11,43,80,.13); background: rgba(251,250,247,.92); }
+.brand { display: flex; align-items: center; gap: 14px; color: var(--navy); }
+.brand-mark { width: 43px; height: 43px; display: grid; place-items: center; flex: 0 0 auto; }
+.brand-mark img { display: block; width: 100%; height: 100%; object-fit: contain; }
+.brand strong { display: block; font-size: 18px; letter-spacing: -.04em; }
+.brand small { display: block; margin-top: 3px; font-size: 9px; letter-spacing: .18em; opacity: .58; }
+.header-contact { display: flex; align-items: center; gap: 18px; }
+.header-contact span { font-size: 12px; color: var(--muted); }
+.header-contact a { font-family: Georgia, serif; color: var(--navy); font-size: 19px; font-weight: 700; }
+
+.hero { min-height: 680px; display: grid; grid-template-columns: minmax(0, 1fr) minmax(410px, 520px); gap: clamp(50px, 7vw, 120px); align-items: center; padding: 84px max(7vw, 34px) 94px; background: var(--paper); position: relative; }
+.hero::before { content: ""; position: absolute; width: 520px; height: 520px; border: 1px solid rgba(11,43,80,.08); border-radius: 50%; left: -270px; top: 120px; box-shadow: 0 0 0 72px rgba(11,43,80,.025), 0 0 0 144px rgba(11,43,80,.018); }
+.hero-copy { position: relative; max-width: 690px; }
+.eyebrow { margin: 0 0 22px; color: var(--accent); font-size: 12px; font-weight: 800; letter-spacing: .19em; }
+.hero h1 { margin: 0; color: var(--navy); font-family: Georgia, "Noto Serif KR", serif; font-size: clamp(40px, 4.5vw, 64px); font-weight: 500; line-height: 1.22; letter-spacing: -.055em; word-break: keep-all; }
+.hero-title-line { display: block; white-space: nowrap; }
+.hero-description { max-width: 550px; margin: 32px 0 0; font-size: 17px; line-height: 1.8; color: #56626e; word-break: keep-all; }
+.trust-row { display: flex; gap: 13px; margin-top: 44px; flex-wrap: wrap; }
+.trust-row span { padding: 9px 13px; border: 1px solid rgba(11,43,80,.16); border-radius: 999px; font-size: 11px; color: var(--navy); background: rgba(255,255,255,.35); }
+
+.calculator-card { position: relative; padding: 36px 38px 32px; background: #fff; box-shadow: 0 24px 70px rgba(7,29,53,.12); border-top: 4px solid var(--navy); }
+.card-heading { display: flex; gap: 15px; align-items: flex-start; padding-bottom: 25px; margin-bottom: 25px; border-bottom: 1px solid #e6e3dc; }
+.card-heading > span, .section-label > span { color: var(--accent); font: italic 18px Georgia, serif; }
+.card-heading p, .section-label p { margin: 0; color: var(--navy); font-size: 20px; font-weight: 800; }
+.card-heading small { display: block; margin-top: 5px; color: var(--muted); font-size: 12px; }
+.field-group { margin: 0 0 21px; padding: 0; border: 0; }
+.field-group label, .field-group legend { display: block; margin-bottom: 9px; color: #46515b; font-size: 12px; font-weight: 700; }
+.field-group > input, .money-input { width: 100%; height: 52px; border: 1px solid #d5d3cc; background: #fcfbf8; transition: border-color .2s, box-shadow .2s; }
+.field-group > input { padding: 0 15px; outline: none; }
+.field-group > input:focus, .money-input:focus-within { border-color: var(--navy); box-shadow: 0 0 0 3px rgba(11,43,80,.08); }
+.type-toggle { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.type-toggle button { height: 48px; border: 1px solid #d5d3cc; background: #fff; color: #6b747d; cursor: pointer; }
+.type-toggle button.active { color: #fff; border-color: var(--navy); background: var(--navy); font-weight: 700; }
+.honest-report-group { margin-top: -5px; }
+.honest-report-toggle { display: grid !important; grid-template-columns: 24px 1fr; gap: 12px; align-items: center; min-height: 62px; margin: 0 !important; padding: 11px 13px; border: 1px solid #d5d3cc; background: #fcfbf8; cursor: pointer; transition: border-color .2s, background .2s; }
+.honest-report-toggle.active { border-color: var(--accent); background: #fff8f4; }
+.honest-report-toggle input { position: absolute; opacity: 0; pointer-events: none; }
+.honest-check { width: 24px; height: 24px; display: grid; place-items: center; border: 1px solid #c9c7c0; color: transparent; background: #fff; font-size: 13px; }
+.honest-report-toggle.active .honest-check { border-color: var(--accent); color: #fff; background: var(--accent); }
+.honest-copy strong { display: block; color: var(--navy); font-size: 13px; }
+.honest-copy small { display: block; margin-top: 4px; color: #7b838b; font-size: 10px; }
+.money-input { display: flex; align-items: center; padding: 0 15px; }
+.money-input input { width: 100%; border: 0; outline: 0; background: transparent; font-size: 16px; font-weight: 700; color: var(--navy); }
+.money-input span { color: #778089; font-size: 13px; }
+.quick-values { display: flex; gap: 7px; margin-top: 9px; }
+.quick-values button { flex: 1; padding: 7px 2px; border: 0; background: #eff2f4; color: #586775; font-size: 11px; cursor: pointer; }
+.input-note { margin: -3px 0 0; font-size: 11px; color: #899098; }
+
+.result-section { padding: 78px max(7vw, 34px) 88px; background: var(--navy); color: #fff; min-height: 395px; }
+.section-label { display: flex; gap: 14px; align-items: center; max-width: 1240px; margin: 0 auto 38px; }
+.section-label p { color: #fff; }
+.empty-result { max-width: 1240px; margin: 0 auto; border: 1px dashed rgba(255,255,255,.2); min-height: 180px; display: flex; align-items: center; justify-content: center; gap: 20px; color: rgba(255,255,255,.48); }
+.empty-result span { width: 54px; height: 54px; border: 1px solid rgba(255,255,255,.2); border-radius: 50%; display: grid; place-items: center; font: 22px Georgia, serif; }
+.empty-result p { line-height: 1.65; }
+.result-intro, .fee-cards, .calculation-basis { max-width: 1240px; margin-left: auto; margin-right: auto; }
+.result-intro { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 27px; }
+.result-kicker { margin: 0 0 8px; color: #aebdcb; font-size: 12px; }
+.result-intro h2 { margin: 0; font-family: Georgia, "Noto Serif KR", serif; font-size: 28px; font-weight: 500; }
+.vat-chip { padding: 8px 12px; border: 1px solid rgba(255,255,255,.28); border-radius: 99px; font-size: 11px; }
+.fee-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.fee-card { min-height: 180px; padding: 30px; background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.14); }
+.fee-card.primary { background: #fff; color: var(--navy); }
+.fee-card p { margin: 0 0 25px; font-size: 13px; color: #c0cbd5; }
+.fee-card.primary p { color: #687786; }
+.fee-card strong { display: block; font-family: Georgia, "Noto Serif KR", serif; font-size: clamp(29px, 3.2vw, 43px); letter-spacing: -.03em; }
+.fee-value-line { display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+.tax-credit-badge { flex: 0 0 auto; margin: 0 !important; padding: 9px 11px; border: 1px solid rgba(255,255,255,.22); background: rgba(255,255,255,.08); }
+.tax-credit-badge small { display: block; color: #c7d2dc; font-size: 9px; }
+.tax-credit-badge b { display: block; margin-top: 4px; color: #fff; font-size: 11px; }
+.fee-card span { display: block; margin-top: 15px; color: #a6b5c3; font-size: 12px; }
+.fee-card.primary span { color: #71808d; }
+.calculation-basis { display: flex; justify-content: space-between; align-items: center; gap: 25px; padding: 22px 0 0; }
+.calculation-basis > div { display: flex; align-items: center; gap: 12px; }
+.basis-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--accent); }
+.calculation-basis p { display: flex; gap: 15px; margin: 0; color: #b7c4cf; font-size: 12px; }
+.calculation-basis strong { color: #fff; }
+.calculation-basis button { border: 0; background: transparent; color: #fff; font-size: 12px; cursor: pointer; border-bottom: 1px solid rgba(255,255,255,.45); padding: 5px 0; }
+.calculation-basis button span { margin-left: 8px; color: var(--accent); }
+
+.tables-section { max-height: 0; overflow: hidden; opacity: 0; background: #fff; transition: max-height .65s ease, opacity .35s ease; }
+.tables-section.shown { max-height: 2400px; opacity: 1; padding: 86px max(7vw, 34px) 100px; }
+.table-heading { max-width: 1240px; margin: 0 auto 38px; display: flex; justify-content: space-between; align-items: flex-end; gap: 30px; }
+.table-heading h2, .notes-section h2 { margin: 0; color: var(--navy); font-family: Georgia, "Noto Serif KR", serif; font-size: 34px; font-weight: 500; }
+.table-heading > p { margin: 0; font-size: 11px; color: #899098; }
+.table-grid { max-width: 1240px; margin: auto; display: grid; grid-template-columns: .82fr 1.18fr; gap: 28px; align-items: start; }
+.fee-table-wrap { border-top: 3px solid var(--navy); }
+.fee-table-wrap h3 { margin: 0; padding: 20px 18px; font-size: 15px; color: var(--navy); }
+table { width: 100%; border-collapse: collapse; font-size: 12px; }
+th { padding: 12px 15px; text-align: left; color: #747d85; background: #f3f1ec; font-weight: 700; }
+td { padding: 12px 15px; border-bottom: 1px solid #e6e3dc; color: #47525d; }
+th:last-child, td:last-child { text-align: right; }
+tr.selected td { color: var(--navy); background: #edf3f8; font-weight: 700; }
+td em { margin-left: 7px; padding: 3px 6px; border-radius: 99px; color: #fff; background: var(--accent); font-size: 9px; font-style: normal; }
+.honest-table-note { display: grid; grid-template-columns: auto 1fr auto; gap: 12px; align-items: center; margin-top: 12px; padding: 15px; color: var(--navy); background: #fff5ef; border-left: 3px solid var(--accent); font-size: 11px; }
+.honest-table-note em { color: var(--accent); font-style: normal; font-weight: 800; }
+
+.notes-section { padding: 95px max(7vw, 34px); background: var(--paper); display: grid; grid-template-columns: .8fr 1.2fr; gap: 90px; }
+.notes-section > div, .notes-section ul { max-width: 610px; }
+.notes-section ul { list-style: none; margin: 0; padding: 0; }
+.notes-section li { display: grid; grid-template-columns: 35px 1fr; gap: 15px; padding: 19px 0; border-bottom: 1px solid #d8d4cc; }
+.notes-section li span { color: var(--accent); font: italic 14px Georgia, serif; }
+.notes-section li p { margin: 0; color: #5b6670; font-size: 13px; line-height: 1.7; word-break: keep-all; }
+
+footer { padding: 54px max(7vw, 34px) 34px; display: grid; grid-template-columns: 1fr 1fr; gap: 30px; color: #fff; background: var(--navy-deep); }
+.footer-brand strong { font-size: 19px; }
+.footer-brand p, .footer-info p { color: #9daebe; font-size: 12px; }
+.footer-info { text-align: right; }
+.footer-info span { margin-left: 18px; }
+.copyright { grid-column: 1 / -1; padding-top: 28px; margin: 15px 0 0; border-top: 1px solid rgba(255,255,255,.12); color: #698097; font-size: 9px; letter-spacing: .12em; }
+
+@media (max-width: 900px) {
+  .hero { grid-template-columns: 1fr; padding-top: 65px; }
+  .hero-copy { max-width: 640px; }
+  .calculator-card { max-width: 620px; width: 100%; }
+  .table-grid, .notes-section { grid-template-columns: 1fr; }
+  .notes-section { gap: 45px; }
+}
+
+@media (max-width: 640px) {
+  .site-header { height: 76px; padding: 0 20px; }
+  .brand strong { font-size: 15px; }
+  .brand-mark { width: 37px; height: 37px; }
+  .header-contact span { display: none; }
+  .header-contact a { font-size: 14px; }
+  .hero { padding: 54px 20px 64px; gap: 48px; min-height: auto; }
+  .hero h1 { font-size: clamp(31px, 8.8vw, 36px); line-height: 1.3; letter-spacing: -.06em; }
+  .hero-description { margin-top: 23px; font-size: 14px; }
+  .trust-row { margin-top: 30px; }
+  .calculator-card { padding: 28px 22px 25px; }
+  .result-section { padding: 60px 20px 67px; }
+  .result-intro { align-items: flex-start; }
+  .result-intro h2 { font-size: 22px; }
+  .fee-cards { grid-template-columns: 1fr; }
+  .fee-card { min-height: 156px; padding: 25px; }
+  .fee-value-line { align-items: flex-start; flex-direction: column; gap: 15px; }
+  .honest-table-note { grid-template-columns: 1fr; gap: 5px; }
+  .calculation-basis { align-items: flex-start; flex-direction: column; }
+  .calculation-basis p { flex-direction: column; gap: 4px; }
+  .tables-section.shown { padding: 65px 20px 75px; max-height: 3500px; }
+  .table-heading { align-items: flex-start; flex-direction: column; }
+  .table-heading h2, .notes-section h2 { font-size: 29px; }
+  .table-grid { grid-template-columns: 1fr; }
+  table { font-size: 10px; }
+  td, th { padding: 11px 9px; }
+  .notes-section { padding: 70px 20px; }
+  footer { padding: 45px 20px 28px; grid-template-columns: 1fr; }
+  .footer-info { text-align: left; }
+  .copyright { grid-column: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .tables-section { transition: none; } }
+
+[hidden] { display: none !important; }
+button:focus-visible, a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+.honest-report-toggle:focus-within { outline: 2px solid var(--accent); outline-offset: 3px; }
+</style></head><body>
+    <main>
+      <header class="site-header">
+        <a class="brand" href="#top" aria-label="권태욱세무회계사무소 홈">
+          <span class="brand-mark"><img src="tax-association-logo.gif" alt="한국세무사회 로고"></span>
+          <span><strong>권태욱세무회계사무소</strong><small>KWON TAX & ACCOUNTING</small></span>
+        </a>
+        <div class="header-contact"><span>상담 문의</span><a href="tel:0522745100">052. 274. 5100</a></div>
+      </header>
+
+      <section class="hero" id="top">
+        <div class="hero-copy">
+          <p class="eyebrow">FEE GUIDE · 2026</p>
+          <h1><span class="hero-title-line">사업 규모에 맞는</span><span class="hero-title-line">예상 세무보수를</span><span class="hero-title-line">확인하세요.</span></h1>
+          <p class="hero-description">매출규모와 사업자 유형을 기준으로 월 기장료와 세무조정 수수료를 간편하게 안내해 드립니다.</p>
+          <div class="trust-row"><span>울산 남구</span><span>기장 · 신고 · 세무조정</span><span>VAT 별도</span></div>
+        </div>
+
+        <div class="calculator-card" aria-label="예상 보수 계산기">
+          <div class="card-heading"><span>01</span><div><p>예상 보수 계산</p><small>아래 정보를 입력해 주세요.</small></div></div>
+
+          <div class="field-group">
+            <label for="company">기업명</label>
+            <input id="company" placeholder="예: 주식회사 가온" autocomplete="organization">
+          </div>
+
+          <fieldset class="field-group">
+            <legend>사업자 유형</legend>
+            <div class="type-toggle">
+              <button type="button" data-type="individual" class="active" aria-pressed="true">개인사업자</button>
+              <button type="button" data-type="corporation" aria-pressed="false">법인사업자</button>
+            </div>
+          </fieldset>
+
+          <div class="field-group honest-report-group" id="honest-group">
+            <label class="honest-report-toggle" id="honest-label"><input id="honest" type="checkbox"><span class="honest-check" aria-hidden="true">✓</span><span class="honest-copy"><strong>성실신고 대상자</strong><small>선택 시 조정수수료에 2,000,000원 추가</small></span></label>
+          </div>
+          <div class="field-group">
+            <label for="revenue">연간 매출(자산) 금액</label>
+            <div class="money-input"><input id="revenue" inputmode="numeric" placeholder="금액을 입력해 주세요"><span>원</span></div>
+            <div class="quick-values" aria-label="매출 빠른 입력">
+<button type="button" data-revenue="100000000">+ 1억</button><button type="button" data-revenue="300000000">+ 3억</button><button type="button" data-revenue="500000000">+ 5억</button><button type="button" data-revenue="1000000000">+ 10억</button><button type="button" data-revenue="2000000000">+ 20억</button>
+            </div>
+          </div>
+          <p class="input-note">수입금액과 자산금액 중 큰 금액을 입력해 주세요.</p>
+        </div>
+      </section>
+
+      <section class="result-section" id="results" aria-live="polite"></section>
+      <section class="tables-section" id="tables" aria-hidden="true"></section>
+
+      <section class="notes-section">
+        <div><p class="eyebrow">PLEASE NOTE</p><h2>정확한 보수는 상담 후 확정됩니다.</h2></div>
+        <ul>
+          <li><span>01</span><p>수입금액과 자산금액 중 더 큰 금액을 기준으로 적용합니다.</p></li>
+          <li><span>02</span><p>업종, 업무 난이도, 지점·공동사업장, 인건비 신고 건수 등에 따라 가산될 수 있습니다.</p></li>
+          <li><span>03</span><p>세액공제·감면, 외부감사, 가결산 등 추가 업무는 별도 보수가 적용될 수 있습니다.</p></li>
+          <li><span>04</span><p>개인사업자 성실신고 대상자는 조정수수료에 2,000,000원이 추가되며, 해당 성실신고 확인비용은 전액 세액공제될 수 있습니다.</p></li>
+        </ul>
+      </section>
+
+      <footer>
+        <div class="footer-brand"><strong>권태욱세무회계사무소</strong><p>정확한 세무, 든든한 경영 파트너</p></div>
+        <div class="footer-info"><p>울산광역시 남구 갈밭로 46, 7층</p><p><a href="tel:0522745100">T. 052-274-5100</a><span>F. 052-274-5101</span></p></div>
+        <p class="copyright">© 2026 KWON TAX & ACCOUNTING OFFICE</p>
+      </footer>
+    </main>
+<script>
+const bookkeepingRules = [
+  { min: 0, max: 100_000_000, label: "1억 미만", individual: 100_000, corporation: 150_000 },
+  { min: 100_000_000, max: 300_000_000, label: "1억–3억 미만", individual: 120_000, corporation: 170_000 },
+  { min: 300_000_000, max: 500_000_000, label: "3억–5억 미만", individual: 140_000, corporation: 190_000 },
+  { min: 500_000_000, max: 700_000_000, label: "5억–7억 미만", individual: 160_000, corporation: 210_000 },
+  { min: 700_000_000, max: 1_000_000_000, label: "7억–10억 미만", individual: 180_000, corporation: 230_000 },
+  { min: 1_000_000_000, max: 1_500_000_000, label: "10억–15억 미만", individual: 220_000, corporation: 250_000 },
+  { min: 1_500_000_000, max: 2_000_000_000, label: "15억–20억 미만", individual: 250_000, corporation: 280_000 },
+  { min: 2_000_000_000, max: 3_000_000_000, label: "20억–30억 미만", individual: 300_000, corporation: 320_000 },
+  { min: 3_000_000_000, max: 4_000_000_000, label: "30억–40억 미만", individual: 350_000, corporation: 370_000 },
+  { min: 4_000_000_000, max: null, label: "40억 이상", individual: null, corporation: null },
+];
+
+const adjustmentRules = {
+  individual: [
+    { min: 0, max: 100_000_000, label: "1억 미만", base: 350_000, from: 0, rate: 0, formula: "350,000원" },
+    { min: 100_000_000, max: 300_000_000, label: "1억–3억 미만", base: 350_000, from: 100_000_000, rate: 0.0018, formula: "350,000원 + 1억 초과 × 0.18%" },
+    { min: 300_000_000, max: 500_000_000, label: "3억–5억 미만", base: 710_000, from: 300_000_000, rate: 0.0013, formula: "710,000원 + 3억 초과 × 0.13%" },
+    { min: 500_000_000, max: 1_000_000_000, label: "5억–10억 미만", base: 970_000, from: 500_000_000, rate: 0.0012, formula: "970,000원 + 5억 초과 × 0.12%" },
+    { min: 1_000_000_000, max: 2_000_000_000, label: "10억–20억 미만", base: 1_570_000, from: 1_000_000_000, rate: 0.0008, formula: "1,570,000원 + 10억 초과 × 0.08%" },
+    { min: 2_000_000_000, max: 5_000_000_000, label: "20억–50억 미만", base: 2_370_000, from: 2_000_000_000, rate: 0.0005, formula: "2,370,000원 + 20억 초과 × 0.05%" },
+    { min: 5_000_000_000, max: 10_000_000_000, label: "50억–100억 미만", base: 3_870_000, from: 5_000_000_000, rate: 0.0004, formula: "3,870,000원 + 50억 초과 × 0.04%" },
+    { min: 10_000_000_000, max: 30_000_000_000, label: "100억–300억 미만", base: 5_870_000, from: 10_000_000_000, rate: 0.0003, formula: "5,870,000원 + 100억 초과 × 0.03%" },
+    { min: 30_000_000_000, max: 50_000_000_000, label: "300억–500억 미만", base: 11_870_000, from: 30_000_000_000, rate: 0.0001, formula: "11,870,000원 + 300억 초과 × 0.01%" },
+    { min: 50_000_000_000, max: null, label: "500억 이상", base: null, from: 0, rate: 0, formula: "별도 협의" },
+  ],
+  corporation: [
+    { min: 0, max: 50_000_000, label: "5천만원 미만", base: 500_000, from: 0, rate: 0, formula: "500,000원" },
+    { min: 50_000_000, max: 100_000_000, label: "5천만원–1억 미만", base: 500_000, from: 50_000_000, rate: 0.002, formula: "500,000원 + 5천만원 초과 × 0.2%" },
+    { min: 100_000_000, max: 300_000_000, label: "1억–3억 미만", base: 600_000, from: 100_000_000, rate: 0.0018, formula: "600,000원 + 1억 초과 × 0.18%" },
+    { min: 300_000_000, max: 500_000_000, label: "3억–5억 미만", base: 960_000, from: 300_000_000, rate: 0.0016, formula: "960,000원 + 3억 초과 × 0.16%" },
+    { min: 500_000_000, max: 1_000_000_000, label: "5억–10억 미만", base: 1_280_000, from: 500_000_000, rate: 0.0014, formula: "1,280,000원 + 5억 초과 × 0.14%" },
+    { min: 1_000_000_000, max: 2_000_000_000, label: "10억–20억 미만", base: 1_980_000, from: 1_000_000_000, rate: 0.001, formula: "1,980,000원 + 10억 초과 × 0.1%" },
+    { min: 2_000_000_000, max: 5_000_000_000, label: "20억–50억 미만", base: 2_980_000, from: 2_000_000_000, rate: 0.0005, formula: "2,980,000원 + 20억 초과 × 0.05%" },
+    { min: 5_000_000_000, max: 10_000_000_000, label: "50억–100억 미만", base: 4_480_000, from: 5_000_000_000, rate: 0.0004, formula: "4,480,000원 + 50억 초과 × 0.04%" },
+    { min: 10_000_000_000, max: 30_000_000_000, label: "100억–300억 미만", base: 6_480_000, from: 10_000_000_000, rate: 0.0003, formula: "6,480,000원 + 100억 초과 × 0.03%" },
+    { min: 30_000_000_000, max: 50_000_000_000, label: "300억–500억 미만", base: 12_480_000, from: 30_000_000_000, rate: 0.0001, formula: "12,480,000원 + 300억 초과 × 0.01%" },
+    { min: 50_000_000_000, max: null, label: "500억 이상", base: null, from: 0, rate: 0, formula: "별도 협의" },
+  ],
+};
+
+const won = new Intl.NumberFormat("ko-KR");
+
+function findRule(rules, revenue) {
+  return rules.find((rule) => revenue >= rule.min && (rule.max === null || revenue < rule.max)) ?? rules[rules.length - 1];
+}
+
+function compactRevenue(value) {
+  if (value >= 100_000_000) {
+    const eok = value / 100_000_000;
+    return `${Number.isInteger(eok) ? eok : eok.toFixed(1)}억원`;
+  }
+  if (value >= 10_000) return `${Math.round(value / 10_000).toLocaleString("ko-KR")}만원`;
+  return `${won.format(value)}원`;
+}
+
+
+let businessType='individual', showTable=false;
+const $=id=>document.getElementById(id);
+const escapeHTML=value=>String(value).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const price=value=>value===null?'별도 협의':won.format(value)+'원';
+function render(){
+ const revenue=Number($('revenue').value.replace(/\D/g,'')), honest=businessType==='individual'&&$('honest').checked;
+ const label=businessType==='individual'?'개인사업자':'법인사업자', tax=businessType==='individual'?'종합소득세':'법인세';
+ $('honest-group').hidden=businessType!=='individual';$('honest-label').classList.toggle('active',honest);
+ document.querySelectorAll('[data-type]').forEach(b=>{const active=b.dataset.type===businessType;b.classList.toggle('active',active);b.setAttribute('aria-pressed',active)});
+ const bk=findRule(bookkeepingRules,revenue), ar=findRule(adjustmentRules[businessType],revenue);
+ const fee=bk[businessType], add=honest?2000000:0, adjustment=ar.base===null?null:Math.round(ar.base+Math.max(0,revenue-ar.from)*ar.rate)+add;
+ $('results').classList.toggle('ready',revenue>0);
+ $('results').innerHTML='<div class="section-label"><span>02</span><p>예상 보수 안내</p></div>'+(revenue>0?`
+ <div class="result-intro"><div><p class="result-kicker">${escapeHTML($('company').value.trim()||'고객사')} · ${label} · ${compactRevenue(revenue)}</p><h2>예상되는 기본 보수입니다.</h2></div><span class="vat-chip">VAT 별도</span></div>
+ <div class="fee-cards"><article class="fee-card primary"><p>월 기장료</p><strong>${price(fee)}</strong><span>매월 · ${bk.label} 구간</span></article>
+ <article class="fee-card"><p>${tax} 조정수수료</p><div class="fee-value-line"><strong>${price(adjustment)}</strong>${add?'<span class="tax-credit-badge"><small>성실신고 추가보수 2,000,000원</small><b>전액 세액공제 가능</b></span>':''}</div><span>연 1회 · ${ar.label} 구간</span></article></div>
+ <div class="calculation-basis"><div><span class="basis-dot"></span><p><strong>적용 근거</strong>${ar.formula}${add?' + 성실신고 2,000,000원':''}</p></div><button type="button" id="table-toggle" aria-expanded="${showTable}">${showTable?'보수표 닫기':'근거 보수표 전체 보기'}<span aria-hidden="true">↗</span></button></div>`:'<div class="empty-result"><span>₩</span><p>매출 금액을 입력하면<br>예상 보수가 바로 표시됩니다.</p></div>');
+ if($('table-toggle'))$('table-toggle').onclick=()=>{showTable=!showTable;render()};
+ $('tables').classList.toggle('shown',showTable);$('tables').setAttribute('aria-hidden',!showTable);
+ const row=(r,value,active)=>`<tr class="${active?'selected':''}"><td>${r.label}${active?'<em>적용</em>':''}</td><td>${value}</td></tr>`;
+ $('tables').innerHTML=`<div class="table-heading"><div><p class="eyebrow">SOURCE TABLE</p><h2>${label} 보수 산정표</h2></div><p>원본 「세무회계사무소 세무대리 보수표」 기준 · VAT 별도</p></div><div class="table-grid"><div class="fee-table-wrap"><h3>월 기장 수수료</h3><table><thead><tr><th>연간 매출(자산)</th><th>월 보수</th></tr></thead><tbody>${bookkeepingRules.map(r=>row(r,price(r[businessType]),revenue>0&&r===bk)).join('')}</tbody></table></div><div class="fee-table-wrap"><h3>${tax} 조정 수수료</h3><table><thead><tr><th>연간 매출(자산)</th><th>산정 기준</th></tr></thead><tbody>${adjustmentRules[businessType].map(r=>row(r,r.formula,revenue>0&&r===ar)).join('')}</tbody></table>${businessType==='individual'?'<div class="honest-table-note"><strong>성실신고 대상자</strong><span>조정수수료에 2,000,000원 추가</span><em>전액 세액공제 가능</em></div>':''}</div></div>`;
+}
+$('company').addEventListener('input',render);
+$('revenue').addEventListener('input',()=>{const v=$('revenue').value.replace(/\D/g,'');$('revenue').value=v?won.format(Number(v)):'';render()});
+$('honest').addEventListener('change',render);
+document.querySelectorAll('[data-type]').forEach(b=>b.onclick=()=>{businessType=b.dataset.type;if(businessType==='corporation')$('honest').checked=false;render()});
+document.querySelectorAll('[data-revenue]').forEach(b=>b.onclick=()=>{$('revenue').value=won.format(Number(b.dataset.revenue));render()});
+render();
+
+</script></body></html>
